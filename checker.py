@@ -42,6 +42,7 @@ def _checker_loop():
                     for email in subscribers:
                         log.info("Send email to : %s %s", email, code)
                         send_email(email, wilaya_name)
+                        time.sleep(3)
                     mark_notified(code)
 
         time.sleep(CHECK_INTERVAL)
