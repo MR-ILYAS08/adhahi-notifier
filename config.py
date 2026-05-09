@@ -1,0 +1,71 @@
+SMTP_HOST      = ""
+SMTP_PORT      = 465
+SMTP_USER      = ""
+SMTP_PASSWORD  = ""
+EMAIL_FROM     = SMTP_USER
+
+DB_PATH        = "subscribers.db"
+CHECK_INTERVAL = 60  # seconds between API polls
+
+API_URL = "https://adhahi.dz/api/v1/public/wilaya-quotas"
+
+WILAYAS = [
+    {"wilayaNameFr": "Adrar",              "wilayaCode": "01"},
+    {"wilayaNameFr": "Chlef",              "wilayaCode": "02"},
+    {"wilayaNameFr": "Laghouat",           "wilayaCode": "03"},
+    {"wilayaNameFr": "Oum El Bouaghi",     "wilayaCode": "04"},
+    {"wilayaNameFr": "Batna",              "wilayaCode": "05"},
+    {"wilayaNameFr": "Béjaia",             "wilayaCode": "06"},
+    {"wilayaNameFr": "Biskra",             "wilayaCode": "07"},
+    {"wilayaNameFr": "Béchar",             "wilayaCode": "08"},
+    {"wilayaNameFr": "Blida",              "wilayaCode": "09"},
+    {"wilayaNameFr": "Bouira",             "wilayaCode": "10"},
+    {"wilayaNameFr": "Tamanrasset",        "wilayaCode": "11"},
+    {"wilayaNameFr": "Tébessa",            "wilayaCode": "12"},
+    {"wilayaNameFr": "Tlemcen",            "wilayaCode": "13"},
+    {"wilayaNameFr": "Tiaret",             "wilayaCode": "14"},
+    {"wilayaNameFr": "Tizi Ouzou",         "wilayaCode": "15"},
+    {"wilayaNameFr": "Alger",              "wilayaCode": "16"},
+    {"wilayaNameFr": "Djelfa",             "wilayaCode": "17"},
+    {"wilayaNameFr": "Jijel",              "wilayaCode": "18"},
+    {"wilayaNameFr": "Sétif",              "wilayaCode": "19"},
+    {"wilayaNameFr": "Saïda",              "wilayaCode": "20"},
+    {"wilayaNameFr": "Skikda",             "wilayaCode": "21"},
+    {"wilayaNameFr": "Sidi Bel Abbès",     "wilayaCode": "22"},
+    {"wilayaNameFr": "Annaba",             "wilayaCode": "23"},
+    {"wilayaNameFr": "Guelma",             "wilayaCode": "24"},
+    {"wilayaNameFr": "Constantine",        "wilayaCode": "25"},
+    {"wilayaNameFr": "Médéa",              "wilayaCode": "26"},
+    {"wilayaNameFr": "Mostaganem",         "wilayaCode": "27"},
+    {"wilayaNameFr": "M'Sila",             "wilayaCode": "28"},
+    {"wilayaNameFr": "Mascara",            "wilayaCode": "29"},
+    {"wilayaNameFr": "Ouargla",            "wilayaCode": "30"},
+    {"wilayaNameFr": "Oran",               "wilayaCode": "31"},
+    {"wilayaNameFr": "El Bayadh",          "wilayaCode": "32"},
+    {"wilayaNameFr": "Illizi",             "wilayaCode": "33"},
+    {"wilayaNameFr": "Bordj Bou Arréridj", "wilayaCode": "34"},
+    {"wilayaNameFr": "Boumerdès",          "wilayaCode": "35"},
+    {"wilayaNameFr": "El Tarf",            "wilayaCode": "36"},
+    {"wilayaNameFr": "Tindouf",            "wilayaCode": "37"},
+    {"wilayaNameFr": "Tissemsilt",         "wilayaCode": "38"},
+    {"wilayaNameFr": "El Oued",            "wilayaCode": "39"},
+    {"wilayaNameFr": "Khenchela",          "wilayaCode": "40"},
+    {"wilayaNameFr": "Souk Ahras",         "wilayaCode": "41"},
+    {"wilayaNameFr": "Tipaza",             "wilayaCode": "42"},
+    {"wilayaNameFr": "Mila",               "wilayaCode": "43"},
+    {"wilayaNameFr": "Aïn Defla",          "wilayaCode": "44"},
+    {"wilayaNameFr": "Naâma",              "wilayaCode": "45"},
+    {"wilayaNameFr": "Aïn Témouchent",     "wilayaCode": "46"},
+    {"wilayaNameFr": "Ghardaïa",           "wilayaCode": "47"},
+    {"wilayaNameFr": "Relizane",           "wilayaCode": "48"},
+    {"wilayaNameFr": "Timimoun",           "wilayaCode": "49"},
+    {"wilayaNameFr": "Bordj Badji Mokhtar","wilayaCode": "50"},
+    {"wilayaNameFr": "Ouled Djellal",      "wilayaCode": "51"},
+    {"wilayaNameFr": "Béni Abbès",         "wilayaCode": "52"},
+    {"wilayaNameFr": "In Salah",           "wilayaCode": "53"},
+    {"wilayaNameFr": "In Guezzam",         "wilayaCode": "54"},
+    {"wilayaNameFr": "Touggourt",          "wilayaCode": "55"},
+    {"wilayaNameFr": "Djanet",             "wilayaCode": "56"},
+    {"wilayaNameFr": "El M'Ghair",         "wilayaCode": "57"},
+    {"wilayaNameFr": "El Menia",           "wilayaCode": "58"},
+]

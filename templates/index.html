@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adhahi – Notification de disponibilité</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1a6b3c;
+      --green-light: #e8f5ee;
+      --green-mid: #2d8a52;
+      --gold: #b8941a;
+      --gold-light: #fdf6e3;
+      --bg: #f7f5f0;
+      --surface: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --border: #e0dbd0;
+      --radius: 4px;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 1.3;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .field {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    label svg { opacity: 0.6; }
+
+    input[type="email"], select {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 15px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+    }
+
+    input[type="email"]:focus, select:focus {
+      border-color: var(--green);
+      background: #fff;
+    }
+
+    .select-wrap {
+      position: relative;
+    }
+
+    .select-wrap::after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0; height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 6px solid var(--muted);
+      pointer-events: none;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 13px;
+      font-size: 15px;
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: var(--green);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 0.5rem;
+    }
+
+    button[type="submit"]:hover { background: var(--green-mid); }
+    button[type="submit"]:active { transform: scale(0.99); }
+
+    .flash {
+      display: none;
+      padding: 12px 16px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      margin-bottom: 1.25rem;
+      border-left: 3px solid;
+    }
+
+    .flash.success {
+      display: block;
+      background: var(--green-light);
+      color: var(--green);
+      border-color: var(--green);
+    }
+
+    .flash.error {
+      display: block;
+      background: #fdecea;
+      color: #c0392b;
+      border-color: #c0392b;
+    }
+
+    .flash.info {
+      display: block;
+      background: var(--gold-light);
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--muted);
+    }
+
+    .stats strong { color: var(--text); font-weight: 500; }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="badge">adhahi.dz · alertes</div>
+    <h1>Soyez notifié dès<br>la disponibilité</h1>
+    <p class="subtitle">Entrez votre email et sélectionnez votre wilaya.<br>Vous recevrez un email dès l'ouverture des quotas.</p>
+  </div>
+
+  <div class="card">
+
+    {% if message %}
+      <div class="flash {{ message_type }}">{{ message }}</div>
+    {% endif %}
+
+    <form method="POST" action="/subscribe">
+
+      <div class="field">
+        <label>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Adresse email
+        </label>
+        <input type="email" name="email" placeholder="vous@exemple.com" value="{{ email or '' }}" required />
+      </div>
+
+      <div class="field">
+        <label>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Wilaya
+        </label>
+        <div class="select-wrap">
+          <select name="wilaya_code" required>
+            <option value="">— Sélectionner une wilaya —</option>
+            {% for w in wilayas %}
+              <option value="{{ w.wilayaCode }}" data-name="{{ w.wilayaNameFr }}"
+                {% if selected_wilaya == w.wilayaCode %}selected{% endif %}>
+                {{ w.wilayaCode }} – {{ w.wilayaNameFr }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <button type="submit">S'abonner aux alertes</button>
+
+    </form>
+
+    <hr class="divider"/>
+
+    <div class="stats">
+      <span>Abonnés total : <strong>{{ total_subscribers }}</strong></span>
+      <span>Wilayas surveillées : <strong>{{ watched_wilayas }}</strong></span>
+    </div>
+
+  </div>
+
+  <footer>adhahi-notifier 1.0 · By Ilyas Frida</footer>
+</div>
+
+</body>
+</html>
