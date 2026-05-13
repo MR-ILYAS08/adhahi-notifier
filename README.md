@@ -5,4 +5,4 @@ Link to a staging env :
 
 https://adhahi.org/
 
-Developed by Ilyas Frida . V1.1.
+Developed by Ilyas Frida . V1.1
